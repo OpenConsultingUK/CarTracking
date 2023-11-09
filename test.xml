@@ -1,0 +1,8 @@
+<soapenv:Envelope xmlns:soapenv="http://schemas.xmlsoap.org/soap/envelope/" xmlns:tns="http://example.com/geolocation">
+   <soapenv:Header/>
+   <soapenv:Body>
+      <tns:getCity>
+         <tns:city>Manchester</tns:city>
+      </tns:getCity>
+   </soapenv:Body>
+</soapenv:Envelope>

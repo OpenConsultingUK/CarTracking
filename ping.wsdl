@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<definitions
+    xmlns="http://schemas.xmlsoap.org/wsdl/"
+    xmlns:tns="http://xmlsoap.org/geolocation"
+    targetNamespace="http://xmlsoap.org/geolocation"
+    xmlns:xsd="http://www.w3.org/2001/XMLSchema">
+    <message name="getCityRequest">
+        <part name="city" type="xsd:string" />
+    </message>
+    <message name="getCityResponse">
+        <part name="city" type="xsd:string" />
+        <part name="latitude" type="xsd:float" />
+        <part name="longitude" type="xsd:float" />
+    </message>
+    <portType name="GeolocationPortType">
+        <operation name="getCity">
+            <input message="tns:getCityRequest" />
+            <output message="tns:getCityResponse" />
+        </operation>
+    </portType>
+    <binding name="GeolocationBinding" type="tns:GeolocationPortType">
+        <soap:binding style="rpc" transport="http://schemas.xmlsoap.org/soap/http" />
+        <operation name="getCity">
+            <soap:operation soapAction="http://xmlsoap.org/geolocation#getCity" />
+            <input>
+                <soap:body use="encoded" encodingStyle="http://schemas.xmlsoap.org/soap/encoding/" namespace="urn:xmlsoap.org:geolocation" />
+            </input>
+            <output>
+                <soap:body use="encoded" encodingStyle="http://schemas.xmlsoap.org/soap/encoding/" namespace="urn:xmlsoap.org:geolocation" />
+            </output>
+        </operation>
+    </binding>
+    <service name="GeolocationService">
+        <port name="GeolocationPort" binding="tns:GeolocationBinding">
+            <soap:address location="http://xmlsoap.org/geolocation" />
+        </port>
+    </service>
+</definitions>
